@@ -7,6 +7,7 @@ import racingcar.model.GameStatistic;
 import racingcar.model.RacingCarGame;
 import racingcar.model.Validator;
 import racingcar.view.ErrorMessage;
+import racingcar.view.GameMessage;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -23,13 +24,15 @@ public class GameController {
     public void start() {
         RacingCarGame racingCarGame = new RacingCarGame();
         racingCarGame.initializeCars(getNames());
+        outputView.printMessage(GameMessage.RESULT_HEADER);
         processAttempts(racingCarGame, getAttempts());
+        outputView.printWinners(racingCarGame.getWinner());
     }
 
     public void processAttempts(RacingCarGame racingCarGame, int attempts) {
         while (!racingCarGame.doesAttemptEqualTo(attempts)) {
             racingCarGame.moveCars();
-            racingCarGame.getResult();
+            outputView.printResult(racingCarGame.getResult());
         }
     }
 

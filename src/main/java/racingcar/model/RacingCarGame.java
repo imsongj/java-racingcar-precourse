@@ -30,12 +30,34 @@ public class RacingCarGame {
         incrementAttempts();
     }
 
-    public Result getResult() {
+    public List<CarInformation> getResult() {
         List<CarInformation> result = new ArrayList<>();
         for (Car car : cars) {
             result.add(car.getCarInformation());
         }
-        return new Result(result);
+        return result;
+    }
+
+    public List<String> getWinner() {
+        List<CarInformation> result = getResult();
+        int maxPosition = getMaxPosition(result);
+        List<String> winners = new ArrayList<>();
+        for (CarInformation carInformation : result) {
+            if (carInformation.getPosition() == maxPosition) {
+                winners.add(carInformation.getName());
+            }
+        }
+        return winners;
+    }
+
+    public int getMaxPosition(List<CarInformation> result) {
+        int maxPosition = 0;
+        for (CarInformation carInformation : result) {
+            if (carInformation.getPosition() > maxPosition) {
+                maxPosition = carInformation.getPosition();
+            }
+        }
+        return  maxPosition;
     }
 
     public boolean doesAttemptEqualTo(int attempts) {
