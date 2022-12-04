@@ -11,4 +11,9 @@ public class InputView {
         outputView.printMessage(GameMessage.ASK_NAMES);
         return Console.readLine();
     }
+
+    public String readAttempts() {
+        outputView.printMessage(GameMessage.ASK_ATTEMPTS);
+        return Console.readLine();
+    }
 }

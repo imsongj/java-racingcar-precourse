@@ -49,4 +49,23 @@ public class GameController {
             return true;
         }
     }
+
+    public int getNumberOfTries() {
+        String input;
+        do {
+            input = inputView.readAttempts();
+        } while (isInvalidAttempts(input)) ;
+        return Integer.parseInt(input);
+    }
+
+    public boolean isInvalidAttempts(String input) {
+        try {
+            Validator.validateAttempts(input);
+            return false;
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+            outputView.printMessage(ErrorMessage.INVALID_ATTEMPTS);
+            return true;
+        }
+    }
 }

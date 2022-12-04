@@ -28,4 +28,17 @@ public class ValidatorTest {
                 Arguments.of(Arrays.asList("jim", "", "bob"))
         );
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "abc",
+            "12vv",
+            "+42",
+            "10000000000"
+    })
+    @DisplayName("잘못된 시도 회수를 입력하면 예외를 발생시킨다.")
+    void throwExceptionForInvalidAttempts(String input) {
+        assertThatThrownBy(() -> Validator.validateAttempts(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
