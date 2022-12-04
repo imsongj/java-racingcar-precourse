@@ -10,7 +10,9 @@ public class Car {
     }
 
     public void move() {
-
+        if (generateRandomNumber() >= CarStatistic.MOVE_BASE) {
+            position++;
+        }
     }
 
     public int generateRandomNumber() {
