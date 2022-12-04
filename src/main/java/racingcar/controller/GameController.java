@@ -3,7 +3,8 @@ package racingcar.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import racingcar.model.CarStatistic;
+import racingcar.model.GameStatistic;
+import racingcar.model.RacingCarGame;
 import racingcar.model.Validator;
 import racingcar.view.ErrorMessage;
 import racingcar.view.InputView;
@@ -20,11 +21,16 @@ public class GameController {
     }
 
     public void start() {
-        getNames();
+        RacingCarGame racingCarGame = new RacingCarGame();
+        racingCarGame.initializeCars(getNames());
+        processAttempts(racingCarGame, getAttempts());
     }
 
-    public void initializeCarGame() {
-
+    public void processAttempts(RacingCarGame racingCarGame, int attempts) {
+        while (!racingCarGame.doesAttemptEqualTo(attempts)) {
+            racingCarGame.moveCars();
+            racingCarGame.getResult();
+        }
     }
 
     public List<String> getNames() {
@@ -41,7 +47,7 @@ public class GameController {
     public boolean isInvalidName(List<String> names) {
         try {
             Validator.validateNames(names,
-                    CarStatistic.MIN_NAME_LENGTH, CarStatistic.MAX_NAME_LENGTH);
+                    GameStatistic.MIN_NAME_LENGTH, GameStatistic.MAX_NAME_LENGTH);
             return false;
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
@@ -50,7 +56,7 @@ public class GameController {
         }
     }
 
-    public int getNumberOfTries() {
+    public int getAttempts() {
         String input;
         do {
             input = inputView.readAttempts();

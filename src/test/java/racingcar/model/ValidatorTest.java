@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,7 +17,7 @@ public class ValidatorTest {
     @DisplayName("잘못된 이름을 입력하면 예외를 발생시킨다.")
     void throwExceptionForInvalidName(List<String> names) {
         assertThatThrownBy(() -> Validator.validateNames(names,
-                CarStatistic.MIN_NAME_LENGTH, CarStatistic.MAX_NAME_LENGTH))
+                GameStatistic.MIN_NAME_LENGTH, GameStatistic.MAX_NAME_LENGTH))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

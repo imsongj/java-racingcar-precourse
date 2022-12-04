@@ -2,7 +2,6 @@ package racingcar.model;
 
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public class Validator {
     private static final String PATTERN = "^[0-9]*$";
@@ -18,6 +17,7 @@ public class Validator {
     public static void validateAttempts(String input) {
         validateNumeric(input);
         validateInteger(input);
+        validateRange(input);
     }
 
     public static void validateNumeric(String input) {
@@ -30,6 +30,12 @@ public class Validator {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateRange(String input) {
+        if (Integer.parseInt(input) < GameStatistic.MIN_ATTEMPTS) {
             throw new IllegalArgumentException();
         }
     }

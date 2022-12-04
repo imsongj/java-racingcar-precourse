@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private final String name;
     private int position = 0;
@@ -9,13 +8,13 @@ public class Car {
         this.name = name;
     }
 
-    public void move() {
-        if (generateRandomNumber() >= CarStatistic.MOVE_BASE) {
+    public void move(int number) {
+        if (number >= GameStatistic.MOVE_BASE) {
             position++;
         }
     }
 
-    public int generateRandomNumber() {
-        return Randoms.pickNumberInRange(CarStatistic.MIN_RANDOM_NUMBER, CarStatistic.MAX_RANDOM_NUMBER);
+    public CarInformation getCarInformation() {
+        return new CarInformation(name, position);
     }
 }
