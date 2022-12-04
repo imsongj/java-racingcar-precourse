@@ -1,17 +1,9 @@
 package racingcar.model;
 
-public enum CarStatistic {
-    MIN_NAME_LENGTH(1),
-    MAX_NAME_LENGTH(5),
-    MOVE_BASE(4);
-
-    private final int value;
-
-    private CarStatistic(int value) {
-        this.value = value;
-    }
-
-    public int getValue() {
-        return value;
-    }
+public class CarStatistic {
+    public static final int MIN_NAME_LENGTH = 1;
+    public static final int MAX_NAME_LENGTH = 5;
+    public static final int MIN_RANDOM_NUMBER = 0;
+    public static final int MAX_RANDOM_NUMBER = 9;
+    public static final int MOVE_BASE = 4;
 }

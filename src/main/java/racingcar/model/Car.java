@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private final String name;
     private int position = 0;
@@ -8,5 +9,11 @@ public class Car {
         this.name = name;
     }
 
-    // 추가 기능 구현
+    public void move() {
+
+    }
+
+    public int generateRandomNumber() {
+        return Randoms.pickNumberInRange(CarStatistic.MIN_RANDOM_NUMBER, CarStatistic.MAX_RANDOM_NUMBER);
+    }
 }

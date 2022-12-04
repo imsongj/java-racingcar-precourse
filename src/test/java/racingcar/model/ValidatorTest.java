@@ -18,7 +18,7 @@ public class ValidatorTest {
     @DisplayName("잘못된 이름을 입력하면 예외를 발생시킨다.")
     void throwExceptionForInvalidName(List<String> names) {
         assertThatThrownBy(() -> Validator.validateNames(names,
-                CarStatistic.MIN_NAME_LENGTH.getValue(), CarStatistic.MAX_NAME_LENGTH.getValue()))
+                CarStatistic.MIN_NAME_LENGTH, CarStatistic.MAX_NAME_LENGTH))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

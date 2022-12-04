@@ -41,7 +41,7 @@ public class GameController {
     public boolean isInvalidName(List<String> names) {
         try {
             Validator.validateNames(names,
-                    CarStatistic.MIN_NAME_LENGTH.getValue(), CarStatistic.MAX_NAME_LENGTH.getValue());
+                    CarStatistic.MIN_NAME_LENGTH, CarStatistic.MAX_NAME_LENGTH);
             return false;
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
