@@ -24,12 +24,12 @@ public class GameController {
     public void start() {
         RacingCarGame racingCarGame = new RacingCarGame();
         racingCarGame.initializeCars(getNames());
-        outputView.printMessage(GameMessage.RESULT_HEADER);
         processAttempts(racingCarGame, getAttempts());
         outputView.printWinners(racingCarGame.getWinner());
     }
 
     public void processAttempts(RacingCarGame racingCarGame, int attempts) {
+        outputView.printMessage(GameMessage.RESULT_HEADER);
         while (!racingCarGame.doesAttemptEqualTo(attempts)) {
             racingCarGame.moveCars();
             outputView.printResult(racingCarGame.getResult());

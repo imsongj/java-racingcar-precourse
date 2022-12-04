@@ -9,6 +9,7 @@ public class OutputView {
     private static final String POSITION_SYMBOL = "-";
     private static final String DELIMITER = ", ";
     private static final String WINNER_FORMAT = "최종 우승자 : %s";
+
     public void printMessage(String message) {
         System.out.println(message);
     }
